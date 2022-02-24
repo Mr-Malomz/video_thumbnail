@@ -9,7 +9,7 @@
         @mouseenter="onHoverEnter(i)"
         @mouseleave="onHoverLeave(i)"
       >
-        <video class="w-96 h-96" :id="`video-player${video.id}`" muted :controls="hovered"></video>
+        <video class="w-96 h-96" :id="`video-player${video.id}`" muted controls></video>
       </div>
     </div>
   </div>
@@ -22,10 +22,9 @@ export default {
   name: 'IndexPage',
   data() {
     return {
+      videoList,
       cld: null,
       player: null,
-      hovered: false,
-      videoList,
     }
   },
 
@@ -50,13 +49,11 @@ export default {
     onHoverEnter(id) {
       this.player[id].source(this.videoList[id].publicId)
       this.player[id].play()
-      this.hovered = true
     },
 
     onHoverLeave(id) {
       this.player[id].source(this.videoList[id].publicId)
       this.player[id].stop()
-      this.hovered = false
     },
   },
 }
